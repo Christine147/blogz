@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:password@localhost:8889/build-a-blog'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:blog@localhost:3306/build-a-blog'
 app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
@@ -18,7 +18,14 @@ class Blog(db.Model):
         id.title = title
         id.body = body
 
+@app.route('/', methods=['GET'])
+def home():
+    return render_template('blog_home.html')
 
+@app.route('/blog')
+def display_entries():
+    all_entries=Blog.query.all()
+    return render_template('blog_home.html', entries=all_entries)
 
 
 
