@@ -2,31 +2,33 @@
 
 {% block content %}
 
-<h2>New Post</h2>
+<h2>New Blog</h2>
 
-<form method="post">
-    <div class='entry_form'>
-    <label>
-        <input type='text' name= 'title' value=""/>
-        <span class='error'>{{title_error}}</span>
-    </label>
-    </div>
+    <form method="POST">
+        <div class='entry_form'>
+        <label for="blog_title">
+            New Blog Title
+            <input type='text' name= 'blog_title' value="{{blog_title}}"/>
+            <span class='error'>{{title_error}}</span>
+        </label>
+        </div>
 
-    <div class='entry_form'>
-    <label>
-        <input type='text' name= 'body' value =""/>
-        <span class='error'>{{body_error}}</span>
-    </label>
-    </div>
+        <div class='entry_form'>
+        <label for="blog_body">
+            New Entry
+            <input type='text' name= 'blog_body' value ="{{blog_body}}"/>
+            <span class='error'>{{body_error}}</span>
+        </label>
+        </div>
 
-    <div class='entry_form'>
-        <input type='submit' value="Submit"/>
+        <div class='entry_form'>
+            <input type='submit' value="Submit"/>
 
-    </div>
-
-
+        </div>
 
 
-</form>
+
+
+    </form>
 
 {% endblock %}

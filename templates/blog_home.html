@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-{% for entry in entries %}
-<h2>{{blog.title}}</h2>
-<p>{{blog.body}}</p>
-{% endfor %}
+<h1>Build a Blog</h1>
+    {% if show_blog|length == 0 %}
+        <p>No Blog Entries Yet</p>
+    {% else %}
+        <ul>
+            {% for entry in show_blog %}
+            <li>
+                <h2><a href="single_blog?id={{entry.id}}">{{entry.blog_title}}</a></h2></li>
+                <li><p>{{entry.blog_body}}</p>
+            </li>
+          {% endfor %}
+        </ul>
+    {% endif %}
 
 {% endblock %}
